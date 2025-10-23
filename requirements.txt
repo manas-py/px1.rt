@@ -1,0 +1,2 @@
+# Px1rt - Pixel Art Puzzle Game
+# No external dependencies required - uses only Python standard library
