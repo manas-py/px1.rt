@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>px1.rt</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" href="static/x1.png">
+</head>
+<body>
+    <div id="game-container">
+        <div class="menu-bar">
+            <div class="logo">Px1rt</div>
+            <div class="menu">
+                <div class="menu-item" id="start-menu-container">
+                    <span class="menu-label">Start</span>
+                    <div class="dropdown-menu" id="start-dropdown">
+                        <div id="new-game">New</div>
+                        <div id="custom-game">Custom</div>
+                        <div id="upload-game">Upload</div>
+                    </div>
+                </div>
+                <div class="menu-item" id="music-toggle">
+                    <span class="menu-label">
+                        <span id="music-icon-container">
+                            <svg id="speaker-on" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="hidden" viewBox="0 0 16 16">
+                                <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                                <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.482 5.482 0 0 1 11.025 8a5.482 5.482 0 0 1-1.61 3.89l.706.706z"/>
+                                <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                            </svg>
+                            <svg id="speaker-off" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                                <path d="M13.854 5.146a.5.5 0 0 1 0 .708L12.207 7.5l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.207l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 7.5 9.146 5.854a.5.5 0 1 1 .708-.708L11.5 6.793l1.646-1.647a.5.5 0 0 1 .708 0z"/>
+                            </svg>
+                        </span>
+                        Music
+                    </span>
+                </div>
+                <div class="menu-item" id="about-menu">
+                    <span class="menu-label">About</span>
+                </div>
+            </div>
+            <div class="menu-bar-right">
+                <button id="export-button" class="xp-button">Export</button>
+                <div id="counter-display">Changes: 59</div>
+            </div>
+        </div>
+        <canvas id="pixelboard"></canvas>
+        <div class="mobile-zoom-container">
+            <canvas id="mobile-pixelboard"></canvas>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">About Px1rt</span>
+                <button id="close-about-modal" class="close-button">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4L12 12" stroke="white" stroke-width="2"/><path d="M12 4L4 12" stroke="white" stroke-width="2"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>*.o Welcome to Px1rt o.*</h3>
+                <ul>
+                    <b>How to play?</b>
+                    <li><b>Swap Two Pixels:</b> Click two pixels consecutively to swap their colors.</li>
+                    <li><b>Change One Pixel:</b> Double-click a pixel to cycle its colour through the pixelboard's palette. Limited move in Survival mode. Keep tapping until desired colour. Wait 2 seconds to finalize.</li>
+                    <li><b>Upload Pictures:</b> For a fully customized colour palette set. </li>
+                    <li><b>Export:</b> Export your pixelboard as a png. </li>
+                </ul>
+                <hr>
+                <p>Created by Manas Bhandari <3</p>
+                <p>Share you png pixel exports with me on ig: @manas.png</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="export-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Export Image</span>
+                <button id="close-export-modal" class="close-button">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4L12 12" stroke="white" stroke-width="2"/><path d="M12 4L4 12" stroke="white" stroke-width="2"/></svg>
+                </button>
+            </div>
+            <div class="modal-body export-body">
+                <p>Add a "px1rt" watermark to the image?</p>
+                <div class="modal-buttons">
+                    <button id="export-yes-button" class="xp-button">Yes</button>
+                    <button id="export-no-button" class="xp-button">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Upload Image</span>
+                <button id="close-upload-modal" class="close-button">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4L12 12" stroke="white" stroke-width="2"/><path d="M12 4L4 12" stroke="white" stroke-width="2"/></svg>
+                </button>
+            </div>
+            <div class="modal-body" id="upload-modal-body">
+                <div id="upload-step-1">
+                    <p>Select an image to upload:</p>
+                    <input type="file" id="image-upload-input" accept="image/*">
+                    <div id="upload-feedback" style="margin-top:10px;color:#316AC5;"></div>
+                </div>
+                <div id="upload-step-2" class="hidden">
+                    <p>Choose grid size:</p>
+                    <div class="upload-size-options">
+                        <button class="xp-button upload-size-option" data-size="10">10x10</button>
+                        <button class="xp-button upload-size-option" data-size="30">30x30</button>
+                        <button class="xp-button upload-size-option" data-size="59">59x59</button>
+                        <button class="xp-button upload-size-option" data-size="100">100x100</button>
+                    </div>
+                    <p style="margin-top:10px;">Choose game mode:</p>
+                    <div class="upload-mode-options">
+                        <button class="xp-button upload-mode-option" data-mode="Survival">Survival</button>
+                        <button class="xp-button upload-mode-option" data-mode="Creative">Creative</button>
+                    </div>
+                    <div class="modal-buttons" style="margin-top:20px;">
+                        <button id="start-upload-game" class="xp-button" disabled>Start Game</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Modal -->
+    <div id="custom-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Custom Game</span>
+                <button id="close-custom-modal" class="close-button">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4L12 12" stroke="white" stroke-width="2"/><path d="M12 4L4 12" stroke="white" stroke-width="2"/></svg>
+                </button>
+            </div>
+            <div class="modal-body" id="custom-modal-body">
+                <p>Choose grid size:</p>
+                <div class="custom-size-options">
+                    <button class="xp-button custom-size-option" data-size="10">10x10</button>
+                    <button class="xp-button custom-size-option" data-size="30">30x30</button>
+                    <button class="xp-button custom-size-option" data-size="59">59x59</button>
+                    <button class="xp-button custom-size-option" data-size="100">100x100</button>
+                </div>
+                <p style="margin-top:10px;">Choose game mode:</p>
+                <div class="custom-mode-options">
+                    <button class="xp-button custom-mode-option" data-mode="Survival">Survival</button>
+                    <button class="xp-button custom-mode-option" data-mode="Creative">Creative</button>
+                </div>
+                <div class="modal-buttons" style="margin-top:20px;">
+                    <button id="start-custom-modal-game" class="xp-button" disabled>Start Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Confirmation Modal -->
+    <div id="save-confirm-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Save Current Board?</span>
+                <button id="close-save-confirm-modal" class="close-button">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4L12 12" stroke="white" stroke-width="2"/><path d="M12 4L4 12" stroke="white" stroke-width="2"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Would you like to save your current pixelboard as an image before starting a new game?</p>
+                <div class="modal-buttons">
+                    <button id="save-confirm-yes" class="xp-button">Yes</button>
+                    <button id="save-confirm-no" class="xp-button">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="background-music" loop preload="auto"></audio>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
+

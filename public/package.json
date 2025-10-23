@@ -1,0 +1,12 @@
+{
+  "name": "px1rt",
+  "version": "1.0.0",
+  "description": "A pixel art puzzle game",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": ["pixel", "art", "puzzle", "game"],
+  "author": "Manas Bhandari",
+  "license": "MIT"
+}
