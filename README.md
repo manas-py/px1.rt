@@ -75,11 +75,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Manas Bhandari**
-- Website: [manasb.com](https://manasb.com)
-- Instagram: [@manas.png](https://instagram.com/manas.png)
-- GitHub: [@manasbhandari](https://github.com/manasbhandari)
-
+**Manas Bhandari for Kritim Labs**
+- Website: manasbhandari.com.np
+- Share your creations with me on my IG: [@manas.png](https://instagram.com/manas.png)
 ---
 
 Created with ❤️ for pixel art enthusiasts
