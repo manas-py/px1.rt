@@ -1,6 +1,6 @@
 # Px1.rt - Pixel Art Editor
 
-A retro-style pixel art editor with a modern twist. Create beautiful pixel art by swapping and cycling colors in a fun, interactive way.
+A windows-xp themes pixel art game. Create beautiful pixel art by swapping and cycling colors. Create your pictures into pixel art to play around with.
 
 ## 🎨 Features
 
